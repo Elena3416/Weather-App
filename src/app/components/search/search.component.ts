@@ -2,50 +2,72 @@ import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angula
 
 import { HttpClient } from "@angular/common/http";
 import { fromEvent } from 'rxjs';
-import { pluck, debounceTime, switchMap, map } from "rxjs/operators";
+import { pluck, debounceTime, switchMap, map, tap } from "rxjs/operators";
 import { Clima, ClimaFiltrado } from "./../../Interfaces/clima.interface";
+import { Router } from "@angular/router";
+
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css']
 })
-export class SearchComponent implements OnInit, AfterViewInit{
 
-  @ViewChild('InputCiudad')inputciudad:ElementRef; 
+export class SearchComponent implements OnInit, AfterViewInit {
 
+  @ViewChild('InputCiudad') inputciudad: ElementRef;
+
+  public MostrarTarjeta: boolean = false;
   private Url = `https://api.openweathermap.org/data/2.5/weather?q=`;
   private apiKey = `&appid=7ced29ef9b7eb7411a5a0b9cbd6dca58`;
-  public FilterWeather:ClimaFiltrado;
+  public FilterWeather: ClimaFiltrado;
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient, private router:Router) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
-  ngAfterViewInit():void{
+  ngAfterViewInit(): void {
     this.GetCurrentWeather();
   }
 
-  public GetCurrentWeather(){
-    fromEvent(this.inputciudad.nativeElement,'keyup')
-    .pipe(
-      debounceTime(1500),
-      pluck('target', 'value'),
-      switchMap((nomberCiudad) =>
-      this.http.get(`${this.Url}${nomberCiudad}${this.apiKey}`)
+  public GetCurrentWeather() {
+    fromEvent(this.inputciudad.nativeElement, 'keyup')
       .pipe(
-        map((clima:Clima) => {
-          return{
-            namecity: clima.name,
-            CurrentytWeather: clima.weather[0].main,
-            Temperature: clima.main.temp,
-            MaxTemperature: clima.main.temp_max,
-            MinTemperature: clima.main.temp_min,
-          }
-        })
-      )
-      )
-     ).subscribe((objetofiltrado:ClimaFiltrado) => this.FilterWeather = objetofiltrado),
-     () => this.GetCurrentWeather();
+        tap(() => this.MostrarTarjeta = false),
+        debounceTime(1500),
+        pluck('target', 'value'),
+        switchMap((nomberCiudad) =>
+          this.http.get(`${this.Url}${nomberCiudad}${this.apiKey}`)
+            .pipe(
+              map((clima: Clima) => {
+                return {
+                  namecity: clima.name,
+                  CurrentytWeather: clima.weather[0].main,
+                  Temperature: clima.main.temp,
+                  MaxTemperature: clima.main.temp_max,
+                  MinTemperature: clima.main.temp_min,
+                  Imagen: clima.weather[0].icon,
+                }
+              })
+            )
+        )
+      ).subscribe((objetofiltrado: ClimaFiltrado) => {
+        this.FilterWeather = objetofiltrado,
+          this.MostrarTarjeta = true;
+      },
+        () => {
+         Swal.fire({
+           icon:'error',
+           title: 'Hubo un error',
+           text: 'El nombre de la ciudad no existe',
+          }) 
+          this.GetCurrentWeather();
+        });
+  }
+
+
+  public IrHome(){
+    this.router.navigate(['']);
   }
 }

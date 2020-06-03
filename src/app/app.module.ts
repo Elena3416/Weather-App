@@ -6,16 +6,28 @@ import { SearchComponent } from './components/search/search.component';
 import { CardsWeatherComponent } from './components/cards-weather/cards-weather.component';
 
 import { HttpClientModule } from "@angular/common/http";
+import { KelvisCelsiusPipe } from './pipes/kelvis-celsius.pipe';
+import { CambiarImagenClimaPipe } from './directives/cambiar-imagen-clima.pipe';
+import { ConstruirUrlImagenPipe } from './pipes/construir-url-imagen.pipe';
+import { HomeComponent } from './components/home/home.component';
+import { appRouting } from "./app.routes";
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchComponent,
-    CardsWeatherComponent
+    CardsWeatherComponent,
+    KelvisCelsiusPipe,
+    CambiarImagenClimaPipe,
+    ConstruirUrlImagenPipe,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    appRouting,
+    SweetAlert2Module
   ],
   providers: [],
   bootstrap: [AppComponent]

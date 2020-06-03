@@ -52,11 +52,12 @@ export interface Clima {
     cod: number;
 }
 
-export interface ClimaFiltrado{
+export interface ClimaFiltrado {
     namecity: string,
     CurrentytWeather: string,
     Temperature: number,
     MaxTemperature: number,
     MinTemperature: number,
+    Imagen:string;
 }
 
