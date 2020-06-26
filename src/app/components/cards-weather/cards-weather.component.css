@@ -1,7 +1,7 @@
-.Tarjeta {
+.tarjeta {
   margin-top: 50px;
-  height: 50vh;
-  width: 50vh;
+  height: 100%;
+  width: 30vh;
   box-shadow: 0px 0px 107px 21px rgba(148, 143, 148, 0.42);
   border-radius: 35px;
   display: flex;
@@ -10,6 +10,7 @@
   background: #fff;
   padding: 7px;
   margin: 0 20px;
+  cursor: pointer;
 }
 
 .Titulo{
@@ -17,37 +18,37 @@
   margin-top: 20px;
 }
 
-.Tarjeta > img {
+.tarjeta > img {
   width: 100px;
 }
 
-.Tarjeta > .climaActual {
+.tarjeta > .climaActual {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.Tarjeta > .climaActual > p {
+.tarjeta > .climaActual > p {
   margin: auto;
   font-size: 20px;
   font-weight: 500;
 }
 
-.Tarjeta > .TemperaturaEsperadas {
-  width: 50%;
+.tarjeta > .TemperaturaEsperadas {
+  width: 40%;
   display: flex;
   justify-content: space-around;
   text-align: center;
   margin-top: 5%;
 }
 
-.Tarjeta > .TemperaturaEsperadas > .TemperaturaMinima .textoTemperatura {
+.tarjeta > .TemperaturaEsperadas > .TemperaturaMinima .textoTemperatura {
   color: #07945c;
   font-weight: 900;
 }
 
-.Tarjeta > .TemperaturaEsperadas > .TemperaturaMaxima .textoTemperatura {
+.tarjeta > .TemperaturaEsperadas > .TemperaturaMaxima .textoTemperatura {
   color: #ff0000;
   font-weight: 900;
 }

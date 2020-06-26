@@ -1,0 +1,254 @@
+.contenedor {
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(
+    180deg,
+    rgba(216, 196, 252, 1) 40%,
+    rgba(140, 217, 254, 1) 74%
+  );
+  position: relative;
+}
+
+.contenedor > .back-arrow{
+  width: 5vw;
+  height: 5vw;
+  border-radius: 50%;
+  position: absolute;
+  left: 5%;
+  top: 2%;
+  cursor: pointer;
+}
+
+.contenedor > .back-arrow img{
+  width: 100%;
+  margin-left: 10%;
+}
+
+.contenedor > .back-arrow p{
+  color: #fff;
+  margin-top: 10%;
+  margin-left: 20%;
+}
+
+.circulo {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 196, 159, 1) 30%,
+    rgba(255, 195, 221, 1) 50%,
+    rgba(255, 181, 188, 1) 100%
+  );
+  animation: CambiandoForma 5s forwards;
+}
+
+.detalles {
+  width: 70%;
+  height: 70vh;
+  background: linear-gradient(
+    180deg,
+    rgba(126, 115, 173, 1) 30%,
+    rgba(197, 154, 179, 1) 70%,
+    rgba(229, 171, 182, 1) 100%
+  );
+  border-radius: 3%;
+  position: absolute;
+  top: 7%;
+  left: 15%;
+}
+
+.Temperatura {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 5%;
+  width: 100%;
+  opacity: 1;
+}
+
+.ColumnaDatos {
+  width: 100%;
+  margin-left: 15%;
+}
+
+.ColumnaDatos > div > p:nth-child(1) {
+  font-size: 70px;
+  color: #fff;
+  font-weight: 700;
+}
+
+.ColumnaDatos > div > p:nth-child(2) {
+  font-size: 20px;
+  color: #fff;
+  letter-spacing: 2px;
+}
+
+.ColumnaDatos > .Weather {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 5%;
+  margin-left: -50%;
+}
+
+.Weather > span:nth-child(1) > p:nth-child(1) {
+  font-size: 15px;
+  color: #fff;
+  text-align: center;
+}
+
+.Weather > span:nth-child(1) > p:nth-child(2) {
+  font-size: 20px;
+  color: #fff;
+  text-align: center;
+  margin-top: 10%;
+}
+
+#separador {
+  width: 3px;
+  height: 40px;
+  color: #fff;
+  background: #fff;
+  margin-left: -25%;
+}
+
+.Weather > span:nth-child(3) > p:nth-child(1) {
+  font-size: 15px;
+  color: #fff;
+  text-align: center;
+  margin-left: -300px;
+}
+
+.Weather > span:nth-child(3) > p:nth-child(2) {
+  font-size: 20px;
+  color: #fff;
+  text-align: center;
+  margin-left: -300px;
+}
+
+.ColumnaNombre > h3 {
+  font-size: 30px;
+  color: #fff;
+  margin-left: -30%;
+  margin-top: -20%;
+}
+
+.separador {
+  width: 100%;
+  height: 3px;
+  color: #fff;
+  background: #fff;
+  margin-left: -30%;
+  margin-top: 3%;
+}
+
+@keyframes CambiandoForma {
+  0% {
+    position: absolute;
+    top:20%;
+    left: 10%;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    opacity: 0;
+  }
+  10% {
+    position: absolute;
+    top:30%;
+    left: 10%;
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+    opacity: 0.1;
+  }
+  20% {
+    position: absolute;
+    top:20%;
+    left: 10%;
+    width: 200px;
+    height: 200px;
+    border-radius: 200px;
+    opacity: 0.2;
+  }
+  30% {
+    position: absolute;
+    top:20%;
+    left: 10%;
+    width: 300px;
+    height: 300px;
+    border-radius: 300px;
+    opacity: 0.3;
+  }
+  40% {
+    position: absolute;
+    top:20%;
+    left: 10%;
+    width:400px;
+    height: 400px;
+    border-radius: 400px;
+    opacity: 0.4;
+  } 
+  50% {
+    position: absolute;
+    top:20%;
+    left: 10%;
+    width: 500px;
+    height: 500px;
+    border-radius: 500px;
+    opacity: 0.5;
+  } 
+  60% {
+    position: absolute;
+    top:20%;
+    left: 10%;
+    width: 600px;
+    height: 520px;
+    border-radius: 520px;
+    opacity: 0.6;
+  } 
+  70% {
+    position: absolute;
+    top:10%;
+    left: 10%;
+    width: 700px;
+    height: 520px;
+    border-radius: 540px;
+    opacity: 0.7;
+  } 
+  80% {
+    position: absolute;
+    top:10%;
+    left: 10%;
+    width: 800px;
+    height: 520px;
+    border-radius: 560px;
+    opacity: 0.8;
+  } 
+  80% {
+    position: absolute;
+    top:10%;
+    left: 10%;
+    width: 900px;
+    height: 520px;
+    border-radius: 580px;
+    opacity: 0.9;
+  } 
+  90% {
+    position: absolute;
+    top:10%;
+    left: 10%;
+    width: 1000px;
+    height: 580px;
+    border-radius: 500px;
+    opacity: 1;
+  } 
+  100% {
+    position: absolute;
+    top:5%;
+    left: 3%;
+    width: 1210px;
+    height: 580px;
+    border-radius: 500px;
+    opacity: 1.5;
+  } 
+}

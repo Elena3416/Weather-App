@@ -1,0 +1,39 @@
+<div class="contenedor">
+  <div class="back-arrow" (click)="IrHome()">
+    <img [src]="LinkArrwoLeft" alt="arrowleft" />
+    <p>BACK</p>
+  </div>
+  <div class="circulo">
+    <div class="detalles">
+      <div class="Temperatura">
+        <div class="ColumnaDatos">
+          <div>
+            <p>{{ currentweather.temperature | kelvisCelsius }}</p>
+            <p>{{ currentweather.currentytWeather }}</p>
+          </div>
+
+          <div class="Weather">
+            <span>
+              <p>HUMIDITY</p>
+              <p>{{ currentweather.humidity }} %</p>
+            </span>
+            <div id="separador"></div>
+            <span>
+              <p>WIND</p>
+              <p>{{ currentweather.wind }} K/M</p>
+            </span>
+          </div>
+        </div>
+
+        <div class="ColumnaNombre">
+          <h3>{{ currentweather.namecity }}</h3>
+          <div class="separador"></div>
+        </div>
+      </div>
+
+      <div class="Weatherforecast">
+        
+      </div>
+    </div>
+  </div>
+</div>

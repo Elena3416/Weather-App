@@ -2,9 +2,10 @@
 
   <ng-container  *ngIf="!loading">
     <app-cards-weather 
-    [style.height.%] = "60"
     [climaFiltradoRecibido]="clima" 
-    *ngFor="let clima of ArrayClimaFiltrado"></app-cards-weather>
+    *ngFor="let clima of ArrayClimaFiltrado"
+    [mostrarBoton] = "false"
+    ></app-cards-weather>
   </ng-container>
 
   <div class="Tarjeta" (click)="IrAgregar()">

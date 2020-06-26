@@ -1,6 +1,6 @@
 <div class="contenedor">
   <div class="back-arrow" (click)="IrHome()">
-    <img src="./../../../assets/IMG/return.png" alt="arrowleft" />
+    <img [src]="ImagenRegresar" alt="arrowleft" />
   </div>
 
   <div class="contenedor-Buscador">
@@ -8,7 +8,7 @@
 
     <div class="input-search">
       <input #InputCiudad type="text" placeholder="Busca tu Ciudad" />
-      <span><img src="./../../../assets/IMG/search.png" alt="" /></span>
+      <span><img [src]="ImagenBuscar" alt="" /></span>
     </div>
 
     <p *ngIf="!MostrarTarjeta" class="Texto">Ingresa una ciudad</p>
@@ -16,6 +16,7 @@
     <app-cards-weather
       *ngIf="MostrarTarjeta"
       [climaFiltradoRecibido]="FilterWeather"
+      [mostrarBoton]="true"
     >
     </app-cards-weather>
   </div>

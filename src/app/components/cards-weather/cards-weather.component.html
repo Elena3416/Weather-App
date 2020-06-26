@@ -1,4 +1,4 @@
-<div class="Tarjeta">
+<div class="tarjeta" (click)="IrDetalles()">
   <p class="Titulo">{{ climaFiltradoRecibido.namecity }}</p>
   <img [src]="climaFiltradoRecibido.Imagen | construirUrlImagen" alt="cloudy" />
   <!--  http://openweathermap.org/img/wn/10d@2x.png -->
@@ -19,7 +19,7 @@
     </div>
   </div>
 
-  <button (click)="AgregarCiudad()">
+  <button (click)="AgregarCiudad()" *ngIf="mostrarBoton">
     ADD CITY
   </button>
 </div>

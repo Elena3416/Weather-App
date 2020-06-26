@@ -1,10 +1,9 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
-
-import { HttpClient } from "@angular/common/http";
 import { fromEvent } from 'rxjs';
 import { pluck, debounceTime, switchMap, map, tap } from "rxjs/operators";
 import { Clima, ClimaFiltrado } from "./../../Interfaces/clima.interface";
 import { Router } from "@angular/router";
+import { WeatherService } from "src/app/services/ApiWeather.service";
 
 import Swal from 'sweetalert2';
 
@@ -19,11 +18,11 @@ export class SearchComponent implements OnInit, AfterViewInit {
   @ViewChild('InputCiudad') inputciudad: ElementRef;
 
   public MostrarTarjeta: boolean = false;
-  private Url = `https://api.openweathermap.org/data/2.5/weather?q=`;
-  private apiKey = `&appid=7ced29ef9b7eb7411a5a0b9cbd6dca58`;
   public FilterWeather: ClimaFiltrado;
+  public ImagenRegresar:string = `./../../../assets/IMG/return.png`;
+  public ImagenBuscar:string = `./../../../assets/IMG/search.png`;
 
-  constructor(private http: HttpClient, private router:Router) { }
+  constructor(private router:Router, private AWService:WeatherService) { }
 
   ngOnInit(): void { }
 
@@ -37,8 +36,9 @@ export class SearchComponent implements OnInit, AfterViewInit {
         tap(() => this.MostrarTarjeta = false),
         debounceTime(1500),
         pluck('target', 'value'),
-        switchMap((nomberCiudad) =>
-          this.http.get(`${this.Url}${nomberCiudad}${this.apiKey}`)
+        switchMap((
+          NombreCiudad:string) =>
+          this.AWService.GetWeather(NombreCiudad)
             .pipe(
               map((clima: Clima) => {
                 return {
@@ -65,7 +65,6 @@ export class SearchComponent implements OnInit, AfterViewInit {
           this.GetCurrentWeather();
         });
   }
-
 
   public IrHome(){
     this.router.navigate(['']);
